@@ -1,0 +1,7 @@
+syntax: glob
+.idea
+build
+*.pyc
+common.egg-info
+dist
+venv
