@@ -1,4 +1,5 @@
 import logging as py_logging
+from logging.config import dictConfig
 from common.logging import handlers
 
 __all__ = [
@@ -50,8 +51,7 @@ def configure(logger, config, level=LEVEL.INFO):
     :return: The configured logger
     """
     if not logger.handlers:
-        handler = handlers.create(config)
-        logger.addHandler(handler)
+        dictConfig(config)
         logger.setLevel(level)
 
     return logger
