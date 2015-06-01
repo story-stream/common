@@ -1,5 +1,6 @@
 import logging as py_logging
 import pymongo
+from datetime import datetime
 
 
 class MongoHandler(py_logging.Handler):
@@ -16,6 +17,7 @@ class MongoHandler(py_logging.Handler):
 
     def emit(self, record):
         log_model = {
+            'created': datetime.utcnow(),
             'name': record.name,
             'module': record.module,
             'func_name': record.funcName,
