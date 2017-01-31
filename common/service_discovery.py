@@ -3,7 +3,7 @@ import srvlookup
 __all__ = ['resolve']
 
 
-def resolve(host, template, domain='service.consul'):
+def resolve(host, template, domain='service.consul', fail_silently=False):
     """
     Queries accessible DNS servers for SRV records with match `host`.`domain`
     Interpolates the result with `template` to generate the connection string.
@@ -26,4 +26,7 @@ def resolve(host, template, domain='service.consul'):
             '{host}:{port}'.format(**x.__dict__) for x in hosts]))
 
     except srvlookup.SRVQueryFailure:
+        if fail_silently:
+            return None
+            
         raise srvlookup.SRVQueryFailure('{0} could not be located'.format(query))
