@@ -1,4 +1,4 @@
-import srvlookup
+from .dns_lookup import lookup, SRVQueryFailure
 
 __all__ = ['resolve']
 
@@ -20,13 +20,13 @@ def resolve(host, template, domain='service.consul', fail_silently=False):
     """
     query = '{0}.{1}'.format(host, domain)
     try:
-        hosts = srvlookup.lookup(host, domain=domain)
+        hosts = lookup(host, domain=domain)
 
         return template.format(','.join([
             '{host}:{port}'.format(**x.__dict__) for x in hosts]))
 
-    except srvlookup.SRVQueryFailure:
+    except SRVQueryFailure:
         if fail_silently:
             return None
-            
-        raise srvlookup.SRVQueryFailure('{0} could not be located'.format(query))
+
+        raise SRVQueryFailure('{0} could not be located'.format(query))
