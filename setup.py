@@ -10,7 +10,7 @@ packages = find_packages(exclude=['ex_setup'])
 
 setup(
     name='common',
-    version='1.2.2.0',
+    version='1.2.2.1',
     author='StoryStream',
     author_email='hello@storystream.it',
     description='A set of common libraries and utilities that are used across the StoryStream infrastructure.',
