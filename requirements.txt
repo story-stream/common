@@ -1,3 +1,2 @@
 pymongo==3.0.2
-dnspython==1.15.0
-srvlookup==1.0.0
+dnspython>=1.15.0
