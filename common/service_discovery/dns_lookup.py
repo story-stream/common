@@ -93,7 +93,7 @@ def _build_resource_to_address_map(answer):
             if record.rdtype == rdatatype.A:
                 mapping[target].append(record.address)
             else:
-                cnames[record.address] = target
+                cnames[record.to_text()] = target
                 mapping[target] = []
 
     for cname, target in cnames.iteritems():
