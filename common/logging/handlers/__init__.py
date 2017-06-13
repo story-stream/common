@@ -1,5 +1,5 @@
 import logging as py_logging
-from mongo import MongoHandler
+from .mongo import MongoHandler
 
 __all__ = [
     'create'
