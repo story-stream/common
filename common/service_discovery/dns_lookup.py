@@ -8,6 +8,7 @@ from collections import defaultdict, namedtuple
 import logging
 from dns import rdatatype, resolver
 import socket
+import six
 
 __version__ = '1.0.0'
 
@@ -96,7 +97,7 @@ def _build_resource_to_address_map(answer):
                 cnames[record.to_text()] = target
                 mapping[target] = []
 
-    for cname, target in cnames.iteritems():
+    for cname, target in six.iteritems(cnames):
         mapping[target].extend(mapping[cname])
 
     return mapping
