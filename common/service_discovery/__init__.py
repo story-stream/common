@@ -23,7 +23,7 @@ def resolve(host, template, domain='service.consul', fail_silently=False):
         hosts = lookup(host, domain=domain)
 
         return template.format(','.join([
-            '{host}:{port}'.format(**x.__dict__) for x in hosts]))
+            '{host}:{port}'.format(**x._asdict()) for x in hosts]))
 
     except SRVQueryFailure:
         if fail_silently:
