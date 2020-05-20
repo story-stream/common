@@ -14,7 +14,7 @@ setup(
     author='StoryStream',
     author_email='hello@storystream.it',
     description='A set of common libraries and utilities that are used across the StoryStream infrastructure.',
-    url='https://bitbucket.org/rhayesbite/common/',
+    url='https://github.com/story-stream/common/',
     packages=packages,
     install_requires=required,
     zip_safe=False
